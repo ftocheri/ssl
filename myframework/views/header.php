@@ -82,6 +82,13 @@
               </li>
             <?
             }
+            elseif(basename($_SERVER['PHP_SELF']) == "examples" && $key == "examples") {
+            ?>
+              <li class="nav-item active">
+                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
+              </li>
+            <?
+            }
             else {
               ?>
               <li class="nav-item active">

@@ -14,7 +14,34 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
   <!-- Custom styles for this template -->
-  <link href="assets/blog-home.css" rel="stylesheet">
+  <link href="/assets/blog-home.css" rel="stylesheet">
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="mymodal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p><?echo @$_GET["msg"]?></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  <? if(@$_GET["msg"] || @$_GET["msg"] != "") {?>
+  <script type="text/javascript">setTimeout(function(){$("#mymodal").modal()},500);</script>
+<? } ?>
+
+</head>
+
+<body>
+
 
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -34,7 +61,21 @@
               </li>
             <?
             }
-            elseif(basename($_SERVER['PHP_SELF']) == "about" && $key == "about") {
+            elseif(basename($_SERVER['PHP_SELF']) == "login" && $key == "login") {
+            ?>
+              <li class="nav-item active">
+                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
+              </li>
+            <?
+            }
+            elseif(basename($_SERVER['PHP_SELF']) == "examples" && $key == "examples") {
+            ?>
+              <li class="nav-item active">
+                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
+              </li>
+            <?
+            }
+            elseif(basename($_SERVER['PHP_SELF']) == "register" && $key == "register") {
             ?>
               <li class="nav-item active">
                 <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
@@ -54,4 +95,3 @@
       </div>
     </div>
   </nav>
- </head>

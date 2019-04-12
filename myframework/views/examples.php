@@ -1,4 +1,4 @@
-<body>
+
 	<script>
 		$(function () {
   			$('[data-toggle="popover"]').popover()

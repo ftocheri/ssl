@@ -9,7 +9,7 @@ class home extends AppController {
 	public function index(){
 		$data = array();
 		$data["pagename"] = "home";
-		$data["navigation"] = array("home"=>"/home", "about"=>"/about", "examples"=>"/examples");
+		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples");
 		$this->parent->getView("header",$data);
 		$this->parent->getView("body");
 		$this->parent->getView("footer");

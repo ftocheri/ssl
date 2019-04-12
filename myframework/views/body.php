@@ -1,5 +1,3 @@
-<body>
-
   <!-- Page Content -->
   <div class="container">
 
@@ -8,7 +6,7 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h1 class="my-4">About
+        <h1 class="my-4">Home
           <small>Secondary Text</small>
         </h1>
 

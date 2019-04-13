@@ -33,6 +33,7 @@ class register extends AppController {
 
 		$name = $_POST['name'];
 		$lastname = $_POST['lastname'];
+		$username = $_POST['username'];
 
 		if(empty($name) || $name == "") {
 			array_push($err, "First Name field is empty.");
@@ -49,6 +50,10 @@ class register extends AppController {
 			if(!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
 				array_push($err, "Invalid characters in last name field.");
 			}
+		}
+
+		if(empty($username) || $username == "") {
+			array_push($err, "Username field is empty.");
 		}
 
 		if(count($err) > 0) {

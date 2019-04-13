@@ -20,6 +20,13 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-user"></i></span>
                 </div>
+                <input name="username" type="text" class="form-control" placeholder="Username">
+              </div>
+
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
                 <input name="name" type="text" class="form-control" placeholder="First Name">
               </div>
 

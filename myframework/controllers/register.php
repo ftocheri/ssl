@@ -10,8 +10,11 @@ class register extends AppController {
 		$data = array();
 		$data["pagename"] = "register";
 		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples");
+		$random = substr( md5(rand()), 0, 7);
+		$data["cap"]=$random;
+
 		$this->parent->getView("header",$data);
-		$this->parent->getView("register");
+		$this->parent->getView("register", $data);
 		$this->parent->getView("footer");
 	}
 
@@ -34,6 +37,10 @@ class register extends AppController {
 		$name = $_POST['name'];
 		$lastname = $_POST['lastname'];
 		$username = $_POST['username'];
+
+		if(!@$_POST["usercatpcha"] || $_POST["usercatpcha"]!="0b5f3cb"){
+				array_push($err,"Captcha Incorrect");
+			}
 
 		if(empty($name) || $name == "") {
 			array_push($err, "First Name field is empty.");

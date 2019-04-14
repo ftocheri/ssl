@@ -52,52 +52,26 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        	<?
-        	foreach($data["navigation"] as $key => $link) {
-            if(basename($_SERVER['PHP_SELF']) == "home" && $key == "home") {
-            ?>
-              <li class="nav-item active">
-                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
-              </li>
-            <?
-            }
-            elseif(basename($_SERVER['PHP_SELF']) == "login" && $key == "login") {
-            ?>
-              <li class="nav-item active">
-                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
-              </li>
-            <?
-            }
-            elseif(basename($_SERVER['PHP_SELF']) == "examples" && $key == "examples") {
-            ?>
-              <li class="nav-item active">
-                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
-              </li>
-            <?
-            }
-            elseif(basename($_SERVER['PHP_SELF']) == "register" && $key == "register") {
-            ?>
-              <li class="nav-item active">
-                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
-              </li>
-            <?
-            }
-            elseif(basename($_SERVER['PHP_SELF']) == "examples" && $key == "examples") {
-            ?>
-              <li class="nav-item active">
-                <a class="nav-link" style="color:red;" href="<?=$link?>"><?=strtoupper($key)?></a>
-              </li>
-            <?
-            }
-            else {
+        	<?foreach($data["navigation"] as $key => $link) {?>
+            <li class="nav-item active">
+              <?if($key == "login" && @$_SESSION["isloggedin"] && @$_SESSION["isloggedin"]==1){?>
+              <a class="nav-link" href="/crud" style="<?=$this->urlPathParts[0]=="crud"?"color:orange":""?>">
+              CRUD</a>
+                <li>
+                <li class="nav-item active"><a class="nav-link" href="/logout">LOGOUT</a>
+              <?}else{?>
+              <a class="nav-link" href="<?=$link?>"
+              <?
+                if($this->urlPathParts[0] == $key) {
+                  echo "style='color:orange'>";
+                }else {
+                  echo " >";
+                }
               ?>
-              <li class="nav-item active">
-                <a class="nav-link" href="<?=$link?>"><?=strtoupper($key)?></a>
-              </li>
-            <?
-            }
-         	}
-         	?>
+              <?=strtoupper($key)?></a>
+              <?}?>
+                </li>
+              <?}?>
         </ul>
       </div>
     </div>

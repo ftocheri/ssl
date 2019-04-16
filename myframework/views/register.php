@@ -53,13 +53,15 @@
 
             ImageString($image, 22, 30, 22, $cap, $text_color);
 
-            /************************************/
-
             imagepng($image, "./assets/image1.png");
 
             }
 
             create_image($data["cap"]);
+
+            var_dump($data["cap"]);
+
+            $_SESSION["capData"] = $data["cap"];
 
             echo "<img src='/assets/image1.png'>";
 

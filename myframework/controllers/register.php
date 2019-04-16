@@ -38,7 +38,7 @@ class register extends AppController {
 		$lastname = $_POST['lastname'];
 		$username = $_POST['username'];
 
-		if(!@$_POST["usercatpcha"] || $_POST["usercatpcha"]!="0b5f3cb"){
+		if(!@$_POST["usercatpcha"] || $_POST["usercatpcha"]!=$_SESSION["capData"]){
 				array_push($err,"Captcha Incorrect");
 			}
 

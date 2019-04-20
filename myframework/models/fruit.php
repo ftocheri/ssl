@@ -23,6 +23,11 @@ class fruit {
     $result = $this->sql->execute($val);
   }
 
+  public function update($sql, $val=array()) {
+    $this->sql = $this->parent->db->prepare($sql);
+    $result = $this->sql->execute($val);
+  }
+
 }
 
 ?>

@@ -6,23 +6,21 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h1 class="my-4">Welcome
-          <small><?echo $data["email"];?></small>
+        <h1 class="my-4">Update
         </h1>
 
         <div class="card mb-4">
           <div class="card-body">
             <h2 class="card-title">Data</h2>
-            <a href="/crud/addForm">Add New Fruit</a>
-            <ul>
-              <?
-                foreach($data["fruit"] as $fruit) {
-                  echo "<li>".$fruit["name"];
-                  echo " <a href='/crud/delete/".$fruit["id"]."'>Delete</a>";
-                  echo " | <a href='/crud/updateForm/".$fruit["id"]."'>Update</a></li>";
-                }
-              ?>
-            </ul>
+
+            <form action = "/crud/updateAction" method="post">
+              <?foreach($data["fruit"] as $fruit) {
+                  ?><input type="text" name="name" value=<?echo $fruit["name"]?>>
+                  <input type="hidden" name="id" value=<?echo $fruit["id"]?>>
+                  <?
+                }?>
+              <input type="submit" name="">
+            </form>
           </div>
         </div>
 

@@ -40,7 +40,7 @@ class register extends AppController {
 
 		if(!@$_POST["usercatpcha"] || $_POST["usercatpcha"]!=$_SESSION["capData"]){
 				array_push($err,"Captcha Incorrect");
-			}
+		}
 
 		if(empty($name) || $name == "") {
 			array_push($err, "First Name field is empty.");

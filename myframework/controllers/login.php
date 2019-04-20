@@ -10,8 +10,9 @@ class login extends AppController {
 		$data = array();
 		$data["pagename"] = "login";
 		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples");
+
 		$this->parent->getView("header",$data);
-		$this->parent->getView("loginForms");
+		$this->parent->getView("loginForms", $data);
 		$this->parent->getView("footer");
 	}
 
@@ -27,22 +28,24 @@ class login extends AppController {
 	public function recvForm() {
 		$email = $_POST['email'];
 		$pass = $_POST['password'];
-		if($email == "forrest@aol.com" && $pass == "1234") {
 
-			$_SESSION["isloggedin"] = "1";
+		$sql = "select * from users_table";
+		$loginAttempt["user"] = $this->parent->getModel("fruit")->select($sql);
+		var_dump($loginAttempt["user"]);
+
+		foreach($loginAttempt["user"] as $user) {
+          if($user["email"] == $email && $user["password"] == $pass) {
+      		$_SESSION["isloggedin"] = "1";
 			$_SESSION["useremail"] = $email;
 			header("location:/crud");
-
-			//header("location:/login?msg=Good Login");
-		}
-		else {
-
-			$_SESSION["isloggedin"] = "0";
+			return;
+          }
+          else {
+          	$_SESSION["isloggedin"] = "0";
 			$_SESSION["useremail"] = "";
 			header("location:/login?msg=Invalid User");
-
-			//header("location:/login?msg=Invalid User");
-		}
+          }
+        }
 	}
 
 	public function recvAjax() {

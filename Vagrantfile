@@ -14,6 +14,7 @@ config.vm.network "forwarded_port", guest: 3306, host: 3306
 
 
 config.vm.synced_folder "./", "/var/www/html"
+config.vm.synced_folder "/Users/forresttocheri/Documents/ssl", "/var/www/html", :owner => "www-data", :group => "www-data"
 config.vm.provision :shell, path: "bootstrap.sh"
   
   	config.trigger.after [:provision, :up, :reload] do

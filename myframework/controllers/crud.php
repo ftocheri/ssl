@@ -15,10 +15,47 @@ class crud extends AppController {
 		$data = array();
 		$data["pagename"] = "crud";
 		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples");
+		$data["email"] = $_SESSION["useremail"];
+
+		$sql = "select * from fruit_table";
+		$data["fruit"] = $this->parent->getModel("fruit")->select($sql);
 
 		$this->parent->getView("header",$data);
-		$this->parent->getView("body");
+		$this->parent->getView("crud", $data);
 		$this->parent->getView("footer");
+	}
+
+	public function addForm() {
+		$data = array();
+		$data["pagename"] = "crud";
+		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples");
+		$data["email"] = $_SESSION["useremail"];
+
+		$sql = "select * from fruit_table";
+		$data["fruit"] = $this->parent->getModel("fruit")->select($sql);
+
+		$this->parent->getView("header",$data);
+		$this->parent->getView("addForm");
+		$this->parent->getView("footer");
+	}
+
+	public function addAction() {
+		$sql = "insert into fruit_table (name) values (:name)";
+
+		$data["fruit"] = $this->parent->getModel("fruit")->insert($sql, array(":name"=>$_REQUEST["name"]));
+
+		var_dump($sql);
+
+		header("location:/crud");
+	}
+
+	public function delete() {
+		$url = $_SERVER["PHP_SELF"];
+		$end = end(explode("/", $url));
+		$sql = "delete from fruit_table where id = (:id)";
+		$data["fruit"] = $this->parent->getModel("fruit")->delete($sql, array(":id"=>$end));
+
+		header("location:/crud");
 	}
 
 }

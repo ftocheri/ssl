@@ -59,8 +59,6 @@
 
             create_image($data["cap"]);
 
-            var_dump($data["cap"]);
-
             $_SESSION["capData"] = $data["cap"];
 
             echo "<img src='/assets/image1.png'>";

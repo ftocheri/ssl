@@ -57,7 +57,11 @@
               <?if($key == "login" && @$_SESSION["isloggedin"] && @$_SESSION["isloggedin"]==1){?>
               <a class="nav-link" href="/crud" style="<?=$this->urlPathParts[0]=="crud"?"color:orange":""?>">
               CRUD</a>
-                <li>
+                </li>
+                <li class="nav-item active">
+              <a class="nav-link" href="/profile" style="<?=$this->urlPathParts[0]=="profile"?"color:orange":""?>">
+              PROFILE</a>
+                </li>
                 <li class="nav-item active"><a class="nav-link" href="/logout">LOGOUT</a>
               <?}else{?>
               <a class="nav-link" href="<?=$link?>"

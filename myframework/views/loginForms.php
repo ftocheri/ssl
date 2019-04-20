@@ -14,7 +14,7 @@
         <div class="card mb-4">
           <div class="card-body">
             <h2 class="card-title">Form Request</h2>
-            <form method="post" action="/login/recv">
+            <form method="post" action="/login/recvForm">
               <input type="hidden" name="type" value="form">
               <div class="form-group input-group">
                 <div class="input-group-prepend">

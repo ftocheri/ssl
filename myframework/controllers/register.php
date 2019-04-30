@@ -9,7 +9,7 @@ class register extends AppController {
 	public function index(){
 		$data = array();
 		$data["pagename"] = "register";
-		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples");
+		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples", "books"=>"/books", "youtube"=>"/youtube");
 		$random = substr( md5(rand()), 0, 7);
 		$data["cap"]=$random;
 

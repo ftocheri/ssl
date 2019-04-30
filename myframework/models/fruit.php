@@ -27,7 +27,26 @@ class fruit {
     $this->sql = $this->parent->db->prepare($sql);
     $result = $this->sql->execute($val);
   }
+}
 
+class apiModel {
+  public function __construct($parent) {
+    $this->db = $parent->db;
+  }
+
+  public function googleBooks($term='') {
+    $client = new Google_Client();
+    $client->setApplicationName("sslapi");
+    $client->setDeveloperKey("AIzaSyDaBQ8tf9WEDRe8ChkJQyDzbliOcrzCK2c
+");
+
+    $service = new Google_Service_Book($client);
+
+    $optParams = array("filter"=>"free-ebooks");
+    $result = $service->volumes->listVolutes($term, $optParams);
+
+    return $result;
+  }
 }
 
 ?>

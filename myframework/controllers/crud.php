@@ -14,7 +14,7 @@ class crud extends AppController {
 
 		$data = array();
 		$data["pagename"] = "crud";
-		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples");
+		$data["navigation"] = array("home"=>"/home", "login"=>"/login", "register"=>"/register", "examples"=>"/examples", "books"=>"/books", "youtube"=>"/youtube");
 		$data["email"] = $_SESSION["useremail"];
 
 		$sql = "select * from fruit_table";
